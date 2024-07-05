@@ -18,6 +18,8 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "jsdom": "^24.1.0"
+    "dotenv": "^16.4.5",
+    "jsdom": "^24.1.0",
+    "puppeteer": "^22.12.1"
   }
 }

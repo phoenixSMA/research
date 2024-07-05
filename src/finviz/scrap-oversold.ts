@@ -1,5 +1,4 @@
 import { JSDOM } from 'jsdom';
-import { ifError } from 'node:assert';
 import { writeFileSync } from 'node:fs';
 
 const getScreenerTable = async (url: string): Promise<[HTMLTableElement, number]> => {
@@ -14,7 +13,7 @@ const getScreenerTable = async (url: string): Promise<[HTMLTableElement, number]
 
 export const scrapOverSold = async () => {
 	const url = 'https://finviz.com/screener.ashx?v=131&f=sh_opt_option,sh_short_o30';
-	let [screenerTable, pages ] = await getScreenerTable(url);
+	let [screenerTable, pages] = await getScreenerTable(url);
 
 	const headers = Array.from(screenerTable.tHead.rows[0].cells)
 		.map(cell => {
@@ -38,7 +37,7 @@ export const scrapOverSold = async () => {
 			});
 
 		if (page < pages) {
-			[ screenerTable ] = await getScreenerTable(`${url}&r=${page * 2}1`);
+			[screenerTable] = await getScreenerTable(`${url}&r=${page * 2}1`);
 		}
 	}
 
